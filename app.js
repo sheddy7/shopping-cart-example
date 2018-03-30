@@ -1,24 +1,37 @@
 
 const productItems = require("./product-items.json");
 
-const cart = {};
+let cart = [];
 
-const getProductItem = (ProductID) => {
-  return productItems.find(item => item.ProductID === ProductID)
+const getProductItem = (productID) => {
+  return productItems.find(item => item.productID === productID);
 };
 
-const addItemToCart = (ProductID) => {
+const addItemToCart = (cart, productID) => {
+  const productToAdd = getProductItem(productID);
 
+  if (!productToAdd) return cart;
+
+  return [...cart, productToAdd];
 };
 
-console.log(getProductItem("A"));
+const listCartItems = (cart) => {
+  return cart.reduce((groups, item) => {
+    console.log(item.title);
+    if (groups[item.title]) {
+      console.log('bwark');
+      groups[item.title] = groups[item.title] + 1;
+    } else {
+      console.log('here');
+      groups[item.title] = 1;
+    }
+    return groups;
+  })
+};
 
-const inventory = [
-    {name: 'apples', quantity: 2},
-    {name: 'bananas', quantity: 0},
-    {name: 'cherries', quantity: 5}
-];
-
-const result = inventory.find( fruit => fruit.name === 'cherries' );
-
-console.log(result)
+cart = addItemToCart(cart, 'A');
+//cart = addItemToCart(cart, 'A');
+cart = addItemToCart(cart, 'B');
+cart = addItemToCart(cart, 'D');
+console.log(cart);
+listCartItems(cart);

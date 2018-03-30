@@ -1,17 +1,17 @@
 [
   {
-    "ProductID": "A",
-    "Title": "The SlimCase",
-    "Price": 8.99
+    "productID": "A",
+    "title": "The SlimCase",
+    "price": 8.99
   },
   {
-    "ProductID": "B",
-    "Title": "MOO Hardcover Notebook",
-    "Price": 14.99
+    "productID": "B",
+    "title": "MOO Hardcover Notebook",
+    "price": 14.99
   },
   {
-    "ProductID": "C",
-    "Title": "MOO Softcover Journal",
-    "Price": 14.99
+    "productID": "C",
+    "title": "MOO Softcover Journal",
+    "price": 14.99
   }
 ]
