@@ -1,23 +1,13 @@
-const shoppingCart = require('./shopping-cart');
-const productItems = require('./product-items.json');
+function shoppingCart(){};
 
-const initialCart = [];
-
-// This method would need find polyfils for IE and older browsers
-const getProductItem = (productID) => {
-  return productItems.find(item => item.productID === productID);
-};
-
-const addItemToCart = (cart, productID) => {
-  const productToAdd = getProductItem(productID);
-
+shoppingCart.prototype.addItemToCart = (cart, productToAdd) => {
   if (!productToAdd) return cart;
 
   return [...cart, productToAdd];
 };
 
 // This method would need findIndex polyfils for IE and older browsers
-const removeItemFromCart = (cart, productID) => {
+shoppingCart.prototype.removeItemFromCart = (cart, productID) => {
   const firstProductIndex = cart.findIndex((item) => item.productID == productID);
 
   if (firstProductIndex === -1) return cart;
@@ -25,7 +15,7 @@ const removeItemFromCart = (cart, productID) => {
   return [...cart.slice(0, firstProductIndex), ...cart.slice(firstProductIndex + 1)];
 };
 
-const listCartItems = (cart) => {
+shoppingCart.prototype.listCartItems = (cart) => {
   let itemList = [];
 
   cart.forEach((item) => {
@@ -44,14 +34,14 @@ const listCartItems = (cart) => {
     }
   });
 
-  return itemList;
+  console.log(itemList)
+
+  return cart;
 };
 
-const getTotalCartCost = (cart) => {
+shoppingCart.prototype.getTotalCartCost = (cart) => {
 
   return cart.reduce((a, b) => ({price: a.price + b.price}));
 };
 
-shoppingCart.listCartItems(
-  shoppingCart.addItemToCart(initialCart, getProductItem('A'))
-);
+module.exports = new shoppingCart();
