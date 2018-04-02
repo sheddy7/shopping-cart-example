@@ -6,7 +6,7 @@ shoppingCart.prototype.addItemToCart = (cart, productToAdd) => {
   return [...cart, productToAdd];
 };
 
-// This method would need findIndex polyfils for IE and older browsers
+// This method would need findIndex polyfil for IE and older browsers
 shoppingCart.prototype.removeItemFromCart = (cart, productID) => {
   const firstProductIndex = cart.findIndex((item) => item.productID == productID);
 
@@ -16,7 +16,7 @@ shoppingCart.prototype.removeItemFromCart = (cart, productID) => {
 };
 
 shoppingCart.prototype.listCartItems = (cart) => {
-  let itemList = [];
+  let itemList = {};
 
   cart.forEach((item) => {
     const { productID } = item;
@@ -34,14 +34,14 @@ shoppingCart.prototype.listCartItems = (cart) => {
     }
   });
 
-  console.log(itemList)
-
-  return cart;
+  return itemList;
 };
 
 shoppingCart.prototype.getTotalCartCost = (cart) => {
 
-  return cart.reduce((a, b) => ({price: a.price + b.price}));
+  const totalCost = cart.reduce((a, b) => ({price: a.price + b.price}));
+
+  return totalCost.price;
 };
 
 module.exports = new shoppingCart();
