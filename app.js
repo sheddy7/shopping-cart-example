@@ -26,4 +26,3 @@ currentCart = shoppingCart.removeItemFromCart(currentCart, 'C');
 
 console.log(shoppingCart.listCartItems(currentCart));
 console.log(shoppingCart.getTotalCartCost(currentCart));
-console.log(currentCart);
